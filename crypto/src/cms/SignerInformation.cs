@@ -293,7 +293,8 @@ namespace Org.BouncyCastle.Cms
 		}
 
 		private bool DoVerify(
-			AsymmetricKeyParameter	key)
+			AsymmetricKeyParameter	key,
+			byte[]									contentHash = null)
 		{
 			string digestName = Helper.GetDigestAlgName(this.DigestAlgOid);
 			IDigest digest = Helper.GetDigestInstance(digestName);
@@ -355,7 +356,11 @@ namespace Org.BouncyCastle.Cms
 
 			try
 			{
-				if (digestCalculator != null)
+				if (contentHash != null)
+				{
+					resultDigest = contentHash;
+				}
+				else if (digestCalculator != null)
 				{
 					resultDigest = digestCalculator.GetDigest();
 				}
@@ -607,6 +612,25 @@ namespace Org.BouncyCastle.Cms
 			}
 
 			return DoVerify(cert.GetPublicKey());
+		}
+
+		/**
+		* verify by content hash that the given certificate successfully handles and confirms
+		* the signature associated with this signer and, if a signingTime
+		* attribute is available, that the certificate was valid at the time the
+		* signature was generated.
+		*/
+		public bool VerifyByHash(
+			X509Certificate cert,
+			byte[]					contentHash)
+		{
+			Asn1.Cms.Time signingTime = GetSigningTime();
+			if (signingTime != null)
+			{
+				cert.CheckValidity(signingTime.Date);
+			}
+
+			return DoVerify(cert.GetPublicKey(), contentHash);
 		}
 
 		/**
