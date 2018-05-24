@@ -7,6 +7,7 @@ using Org.BouncyCastle.Asn1;
 using Org.BouncyCastle.Asn1.CryptoPro;
 using Org.BouncyCastle.Asn1.Oiw;
 using Org.BouncyCastle.Asn1.Pkcs;
+using Org.BouncyCastle.Asn1.Rosstandart;
 using Org.BouncyCastle.Asn1.Sec;
 using Org.BouncyCastle.Asn1.X509;
 using Org.BouncyCastle.Asn1.X9;
@@ -153,7 +154,7 @@ namespace Org.BouncyCastle.Security
                 ECDomainParameters dParams = new ECDomainParameters(x9.Curve, x9.G, x9.N, x9.H, x9.GetSeed());
                 return new ECPublicKeyParameters(q, dParams);
             }
-            else if (algOid.Equals(CryptoProObjectIdentifiers.GostR3410x2001))
+            else if (algOid.Equals(CryptoProObjectIdentifiers.GostR3410x2001) || algOid.Equals(RosstandartObjectIdentifiers.id_tc26_gost_3410_12_256) || algOid.Equals(RosstandartObjectIdentifiers.id_tc26_gost_3410_12_512))
             {
                 Gost3410PublicKeyAlgParameters gostParams = new Gost3410PublicKeyAlgParameters(
                     (Asn1Sequence) algID.Parameters);
@@ -169,17 +170,18 @@ namespace Org.BouncyCastle.Security
                 }
 
                 byte[] keyEnc = key.GetOctets();
-                byte[] x = new byte[32];
-                byte[] y = new byte[32];
+                int keyLen = keyEnc.Length;
+                byte[] x = new byte[keyLen/2];
+                byte[] y = new byte[keyLen/2];
 
                 for (int i = 0; i != y.Length; i++)
                 {
-                    x[i] = keyEnc[32 - 1 - i];
+                    x[i] = keyEnc[keyLen/2 - 1 - i];
                 }
 
                 for (int i = 0; i != x.Length; i++)
                 {
-                    y[i] = keyEnc[64 - 1 - i];
+                    y[i] = keyEnc[keyLen - 1 - i];
                 }
 
                 ECDomainParameters ecP = ECGost3410NamedCurves.GetByOid(gostParams.PublicKeyParamSet);

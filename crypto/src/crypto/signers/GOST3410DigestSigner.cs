@@ -125,8 +125,9 @@ namespace Org.BouncyCastle.Crypto.Signers
 			BigInteger R, S;
 			try
 			{
-				R = new BigInteger(1, signature, 32, 32);
-				S = new BigInteger(1, signature, 0, 32);
+        int blockLen = signature.Length / 2;
+				R = new BigInteger(1, signature, blockLen, blockLen);
+				S = new BigInteger(1, signature, 0, blockLen);
 			}
 			catch (Exception e)
 			{

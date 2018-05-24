@@ -526,6 +526,14 @@ namespace Org.BouncyCastle.Security
             {
                 return new Gost3410DigestSigner(new ECGost3410Signer(), new Gost3411Digest());
             }
+            if (mechanism.Equals("GOST3411_2012_256WITHECGOST3410"))
+            {
+                return new Gost3410DigestSigner(new ECGost3410Signer(), new GOST3411_2012_256Digest());
+            }
+            if (mechanism.Equals("GOST3411_2012_512WITHECGOST3410"))
+            {
+                return new Gost3410DigestSigner(new ECGost3410Signer(), new GOST3411_2012_512Digest());
+            }
 
             if (mechanism.Equals("SHA1WITHRSA/ISO9796-2"))
             {
