@@ -518,11 +518,11 @@ namespace Org.BouncyCastle.Security
                 return (new DsaDigestSigner(new ECNRSigner(), new Sha512Digest()));
             }
 
-            if (mechanism.Equals("GOST3410"))
+            if (mechanism.Equals("GOST3410") || mechanism.Equals("GOST3411WITHGOST3410"))
             {
                 return new Gost3410DigestSigner(new Gost3410Signer(), new Gost3411Digest());
             }
-            if (mechanism.Equals("ECGOST3410"))
+            if (mechanism.Equals("ECGOST3410") || mechanism.Equals("GOST3411WITHECGOST3410"))
             {
                 return new Gost3410DigestSigner(new ECGost3410Signer(), new Gost3411Digest());
             }

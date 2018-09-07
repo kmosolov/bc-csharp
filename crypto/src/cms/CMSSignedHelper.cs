@@ -87,7 +87,7 @@ namespace Org.BouncyCastle.Cms
 			AddEntries(RosstandartObjectIdentifiers.id_tc26_signwithdigest_gost_3410_12_256, "GOST3411_2012_256", "ECGOST3410");
 			AddEntries(RosstandartObjectIdentifiers.id_tc26_signwithdigest_gost_3410_12_512, "GOST3411_2012_512", "ECGOST3410");
 
-      encryptionAlgs.Add(X9ObjectIdentifiers.IdDsa.Id, "DSA");
+			encryptionAlgs.Add(X9ObjectIdentifiers.IdDsa.Id, "DSA");
 			encryptionAlgs.Add(PkcsObjectIdentifiers.RsaEncryption.Id, "RSA");
 			encryptionAlgs.Add(TeleTrusTObjectIdentifiers.TeleTrusTRsaSignatureAlgorithm, "RSA");
 			encryptionAlgs.Add(X509ObjectIdentifiers.IdEARsa.Id, "RSA");
