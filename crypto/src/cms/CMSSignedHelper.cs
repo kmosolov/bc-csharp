@@ -82,8 +82,12 @@ namespace Org.BouncyCastle.Cms
 			AddEntries(EacObjectIdentifiers.id_TA_RSA_v1_5_SHA_256, "SHA256", "RSA");
 			AddEntries(EacObjectIdentifiers.id_TA_RSA_PSS_SHA_1, "SHA1", "RSAandMGF1");
 			AddEntries(EacObjectIdentifiers.id_TA_RSA_PSS_SHA_256, "SHA256", "RSAandMGF1");
+			AddEntries(CryptoProObjectIdentifiers.GostR3411x94WithGostR3410x94, "GOST3411", "GOST3410");
+			AddEntries(CryptoProObjectIdentifiers.GostR3411x94WithGostR3410x2001, "GOST3411", "ECGOST3410");
+			AddEntries(RosstandartObjectIdentifiers.id_tc26_signwithdigest_gost_3410_12_256, "GOST3411_2012_256", "ECGOST3410");
+			AddEntries(RosstandartObjectIdentifiers.id_tc26_signwithdigest_gost_3410_12_512, "GOST3411_2012_512", "ECGOST3410");
 
-			encryptionAlgs.Add(X9ObjectIdentifiers.IdDsa.Id, "DSA");
+      encryptionAlgs.Add(X9ObjectIdentifiers.IdDsa.Id, "DSA");
 			encryptionAlgs.Add(PkcsObjectIdentifiers.RsaEncryption.Id, "RSA");
 			encryptionAlgs.Add(TeleTrusTObjectIdentifiers.TeleTrusTRsaSignatureAlgorithm, "RSA");
 			encryptionAlgs.Add(X509ObjectIdentifiers.IdEARsa.Id, "RSA");
