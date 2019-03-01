@@ -1,6 +1,6 @@
 using System;
 using System.Collections;
-
+using Org.BouncyCastle.Asn1.KZ;
 using Org.BouncyCastle.Asn1.Rosstandart;
 using Org.BouncyCastle.Crypto.Parameters;
 using Org.BouncyCastle.Math;
@@ -43,6 +43,7 @@ namespace Org.BouncyCastle.Asn1.CryptoPro
                 mod_q);
 
             parameters[CryptoProObjectIdentifiers.GostR3410x2001CryptoProA] = ecParams;
+            parameters[KNCAObjectIdentifiers.Gost34310x2004PkiGovKzA] = ecParams;
 
             mod_p = new BigInteger("115792089237316195423570985008687907853269984665640564039457584007913129639319");
             mod_q = new BigInteger("115792089237316195423570985008687907853073762908499243225378155805079068850323");
@@ -192,6 +193,7 @@ namespace Org.BouncyCastle.Asn1.CryptoPro
 
             parameters[RosstandartObjectIdentifiers.id_tc26_gost_3410_12_512_paramSetC] = ecParams;
 
+            objIds["Gost34310-2004-PKIGOVKZ-A"] = KNCAObjectIdentifiers.Gost34310x2004PkiGovKzA;
             objIds["GostR3410-2001-CryptoPro-A"] = CryptoProObjectIdentifiers.GostR3410x2001CryptoProA;
             objIds["GostR3410-2001-CryptoPro-B"] = CryptoProObjectIdentifiers.GostR3410x2001CryptoProB;
             objIds["GostR3410-2001-CryptoPro-C"] = CryptoProObjectIdentifiers.GostR3410x2001CryptoProC;
@@ -202,6 +204,7 @@ namespace Org.BouncyCastle.Asn1.CryptoPro
             objIds["Tc26-Gost-3410-12-512-paramSetB"] = RosstandartObjectIdentifiers.id_tc26_gost_3410_12_512_paramSetB;
             objIds["Tc26-Gost-3410-12-512-paramSetC"] = RosstandartObjectIdentifiers.id_tc26_gost_3410_12_512_paramSetC;
 
+            names[KNCAObjectIdentifiers.Gost34310x2004PkiGovKzA] = "Gost34310-2004-PKIGOVKZ-A";
             names[CryptoProObjectIdentifiers.GostR3410x2001CryptoProA] = "GostR3410-2001-CryptoPro-A";
             names[CryptoProObjectIdentifiers.GostR3410x2001CryptoProB] = "GostR3410-2001-CryptoPro-B";
             names[CryptoProObjectIdentifiers.GostR3410x2001CryptoProC] = "GostR3410-2001-CryptoPro-C";

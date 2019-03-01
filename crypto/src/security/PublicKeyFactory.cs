@@ -5,6 +5,7 @@ using System.Text;
 
 using Org.BouncyCastle.Asn1;
 using Org.BouncyCastle.Asn1.CryptoPro;
+using Org.BouncyCastle.Asn1.KZ;
 using Org.BouncyCastle.Asn1.Oiw;
 using Org.BouncyCastle.Asn1.Pkcs;
 using Org.BouncyCastle.Asn1.Rosstandart;
@@ -154,7 +155,10 @@ namespace Org.BouncyCastle.Security
                 ECDomainParameters dParams = new ECDomainParameters(x9.Curve, x9.G, x9.N, x9.H, x9.GetSeed());
                 return new ECPublicKeyParameters(q, dParams);
             }
-            else if (algOid.Equals(CryptoProObjectIdentifiers.GostR3410x2001) || algOid.Equals(RosstandartObjectIdentifiers.id_tc26_gost_3410_12_256) || algOid.Equals(RosstandartObjectIdentifiers.id_tc26_gost_3410_12_512))
+            else if (algOid.Equals(CryptoProObjectIdentifiers.GostR3410x2001)
+                || algOid.Equals(RosstandartObjectIdentifiers.id_tc26_gost_3410_12_256)
+                || algOid.Equals(RosstandartObjectIdentifiers.id_tc26_gost_3410_12_512)
+                || algOid.Equals(KNCAObjectIdentifiers.Gost34310x2004))
             {
                 Gost3410PublicKeyAlgParameters gostParams = new Gost3410PublicKeyAlgParameters(
                     (Asn1Sequence) algID.Parameters);

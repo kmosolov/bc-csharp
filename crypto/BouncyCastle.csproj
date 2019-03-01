@@ -51,6 +51,7 @@
     <Compile Include="bzip2\src\CBZip2OutputStream.cs" />
     <Compile Include="bzip2\src\CRC.cs" />
     <Compile Include="src\asn1\BERBitString.cs" />
+    <Compile Include="src\asn1\knca\KNCAObjectIdentifiers.cs" />
     <Compile Include="src\AssemblyInfo.cs" />
     <Compile Include="src\asn1\ASN1Generator.cs" />
     <Compile Include="src\asn1\ASN1OctetStringParser.cs" />
@@ -1267,9 +1268,9 @@
     <Compile Include="src\math\ec\multiplier\ZSignedDigitL2RMultiplier.cs" />
     <Compile Include="src\math\ec\multiplier\ZSignedDigitR2LMultiplier.cs" />
     <Compile Include="src\math\ec\rfc7748\X25519.cs" />
-    <Compile Include="src\math\ec\rfc7748\X25519Field.cs"/>
-    <Compile Include="src\math\ec\rfc7748\X448.cs"/>
-    <Compile Include="src\math\ec\rfc7748\X448Field.cs"/>
+    <Compile Include="src\math\ec\rfc7748\X25519Field.cs" />
+    <Compile Include="src\math\ec\rfc7748\X448.cs" />
+    <Compile Include="src\math\ec\rfc7748\X448Field.cs" />
     <Compile Include="src\math\field\FiniteFields.cs" />
     <Compile Include="src\math\field\GF2Polynomial.cs" />
     <Compile Include="src\math\field\GenericPolynomialExtensionField.cs" />
